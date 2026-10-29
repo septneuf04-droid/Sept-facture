@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #EEF0F4;
+  --foreground: #0F172A;
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+}
+
+.dark {
+  --background: #090D16;
+  --foreground: #F8FAFC;
+  --card-bg: #0F172A;
+  --border-color: #1E293B;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Scrollbar épurée */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Utilitaires pour masquer la scrollbar sur mobile tout en conservant le défilement */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Notched input style (style Creatinf & Septfacture) */
+.notched-input-group {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 2px;
+}
+
+.notched-label {
+  position: absolute;
+  top: -9px;
+  left: 14px;
+  background-color: #FFFFFF;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.1;
+  z-index: 10;
+  border-radius: 4px;
+  letter-spacing: -0.01em;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.dark .notched-label {
+  color: #94A3B8;
+  background-color: #1E293B;
+}
+
+.dark .bg-\[\#0F172A\] .notched-label,
+.dark.bg-\[\#0F172A\] .notched-label {
+  background-color: #0F172A;
+}
+
+.notched-input-group:focus-within .notched-label {
+  color: #2563EB;
+  font-weight: 700;
+}
+
+.dark .notched-input-group:focus-within .notched-label {
+  color: #60A5FA;
+}
+
+.notched-input {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  padding: 11px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #0F172A;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Forcer le padding intérieur lorsque l'input a une icône */
+.notched-input.has-icon-left,
+.notched-input.pl-10,
+.notched-input.pl-11,
+.notched-input.pl-12,
+.notched-input.\!pl-10,
+.notched-input.\!pl-11,
+.notched-input.\!pl-12,
+.relative:has(> svg.absolute.left-3\.5) > .notched-input,
+.relative:has(> [class*="left-3"]) > .notched-input {
+  padding-left: 44px !important;
+}
+
+.notched-input.has-icon-right,
+.notched-input.pr-10,
+.notched-input.pr-11,
+.notched-input.pr-12,
+.notched-input.\!pr-10,
+.notched-input.\!pr-11,
+.notched-input.\!pr-12,
+.relative:has(> [class*="right-3"]) > .notched-input {
+  padding-right: 44px !important;
+}
+
+.dark .notched-input {
+  border-color: #334155;
+  background-color: #0F172A;
+  color: #F8FAFC;
+}
+
+.notched-input:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.dark .notched-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* ======================================================== */
+/* PLACEHOLDERS & STYLES DE SAISIE UNIFIÉS                  */
+/* ======================================================== */
+::placeholder {
+  color: #94A3B8 !important;
+  opacity: 0.85;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dark ::placeholder {
+  color: #64748B !important;
+  opacity: 0.9;
+}
+
+:focus::placeholder {
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+
+/* Saisie textuelle propre pour inputs, selects et textareas */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #0F172A;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+  color: #F8FAFC;
+}
+
+/* Effets hover professionnels adaptés */
+.btn-pro {
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-pro:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn-pro:active {
+  transform: translateY(0.5px);
+}
+
+.btn-primary-pro {
+  background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2), 0 1px 2px rgba(37, 99, 235, 0.1);
+}
+
+.btn-primary-pro:hover {
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+  box-shadow: 0 6px 16px -2px rgba(37, 99, 235, 0.35), 0 2px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary-pro {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dark .btn-secondary-pro {
+  background-color: #1E293B;
+  border-color: #334155;
+  color: #F1F5F9;
+}
+
+.btn-secondary-pro:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dark .btn-secondary-pro:hover {
+  background-color: #334155;
+  border-color: #475569;
+  color: #FFFFFF;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ======================================================== */
+/* RÈGLES D'IMPRESSION ET EXPORT PDF OFFICIEL               */
+/* ======================================================== */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+  }
+
+  /* Cacher la sidebar, le header, les boutons d'action */
+  aside,
+  header,
+  nav,
+  .no-print,
+  button,
+  .sonner-toast {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  #invoice-document {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
